@@ -1,0 +1,16 @@
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
+
+.btn-orange {
+    background-color: orangered;
+    color: white;
+}
+
+/* .padding-left {
+  padding-left: 240px;
+} */
