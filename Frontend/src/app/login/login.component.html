@@ -1,0 +1,50 @@
+<section class="vh-100 padding-left">
+    <div class="container py-5 h-100">
+      <div class="row d-flex align-items-center justify-content-center h-100">
+        <div class="col-md-8 col-lg-7 col-xl-6">
+          <img src="https://www.persistent.com/wp-content/uploads/2020/09/persistent-systems-header-logo.png" class="img-fluid pl-lg-5" alt="Phone image">
+        </div>
+        <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1 pr-lg-5">
+
+          <!-- Login form -->
+          <form (ngSubmit)="onSubmit()">
+            <div class="form-outline mb-4">
+                <h2 class="text-center" style="color: orangered;"><b>Login</b></h2>
+            </div>
+            <!-- Username input -->
+            <div class="form-outline mb-4">
+              <input type="username" id="username" name="username" [(ngModel)]="credentials.username" class="form-control form-control-lg" required/>
+              <label class="form-label" for="username">Username</label>
+            </div>
+  
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+              <input type="password" id="password" name="password" [(ngModel)]="credentials.username" class="form-control form-control-lg" required/>
+              <label class="form-label" for="password">Password</label>
+            </div>
+  
+            <div class="d-flex justify-content-around align-items-center mb-4">
+              <!-- Checkbox -->
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="rememberMe"
+                  checked
+                />
+                <label class="form-check-label" for="rememberMe"> Remember me </label>
+              </div>
+              <a href="#!" style="color: orangered;">Forgot password?</a>
+            </div>
+  
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-orange btn-lg btn-block">Sign in</button>
+  
+          </form>
+
+          
+        </div>
+      </div>
+    </div>
+  </section>
