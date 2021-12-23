@@ -1,6 +1,8 @@
+import { LoginService } from './../services/login.service';
 
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,27 +11,30 @@ import { FormsModule } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  credentials = {
-    username:"",
-    password:""
+  user ={
+    username:'',
+    password:''
   }
+  isError :boolean = true;
 
-  constructor() { }
+
+  constructor(private service:LoginService,private router:Router) { }
 
   ngOnInit(): void {
   }
 
-  onSubmit(){
-    console.log("logged in!!");
-    if((this.credentials.username!='' && this.credentials.password!='') && (this.credentials.username!=null && this.credentials.password!=null)){
-      //we have to create a service
-
-      //token service
-      
-    }else{
-      console.log("fields are empty");
-      
+  login(){
+    
+    this.service.validateLogin(this.user).subscribe(data=>{
+      if(data==200){
+        this.isError=true;
+        this.router.navigateByUrl('/profile');
+      }
+    },err=>{
+      this.isError=false;
     }
+    )
+
   }
 
 }

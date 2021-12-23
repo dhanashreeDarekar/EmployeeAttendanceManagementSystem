@@ -1,4 +1,5 @@
-import { HttpClientModule } from '@angular/common/http';
+import { LoginService } from './services/login.service';
+import { HttpClientModule , HttpClient } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -18,6 +19,7 @@ import { LeavesComponent } from './leaves/leaves.component';
 import { AttendanceComponent } from './attendance/attendance.component';
 import { EmpListComponent } from './emp-list/emp-list.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,12 +38,12 @@ import { EmpListComponent } from './emp-list/emp-list.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule,
-    HttpClientModule
+    FormsModule
   ],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

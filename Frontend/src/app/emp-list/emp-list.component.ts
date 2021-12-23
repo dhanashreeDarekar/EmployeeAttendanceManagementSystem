@@ -10,6 +10,7 @@ export class EmpListComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
 }
