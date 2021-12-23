@@ -1,4 +1,6 @@
 package com.miniproject.module.AttendanceManagementSystem.Entity;
+import org.hibernate.annotations.ColumnDefault;
+
 import java.util.*;
 
 import javax.persistence.*;
@@ -12,7 +14,8 @@ public class Leave {
 	private int leave_id;
 	//private int leave_emp_id;
 	private String  leave_description;
-	private boolean leave_approved;
+	@ColumnDefault("false")
+	private boolean approved;
 	private Date date_from = new Date();
 	private Date date_to = new Date();
 	private int leave_month;
@@ -51,10 +54,10 @@ public class Leave {
 		this.leave_description = leave_description;
 	}
 	public boolean isLeave_approved() {
-		return leave_approved;
+		return approved;
 	}
 	public void setLeave_approved(boolean leave_approved) {
-		this.leave_approved = leave_approved;
+		this.approved = leave_approved;
 	}
 	public Date getDate_from() {
 		return date_from;
@@ -85,7 +88,7 @@ public class Leave {
 		this.leave_id = leave_id;
 		//this.leave_emp_id = leave_emp_id;
 		this.leave_description = leave_description;
-		this.leave_approved = leave_approved;
+		this.approved = leave_approved;
 		this.date_from = date_from;
 		this.date_to = date_to;
 		this.leave_month = leave_month;

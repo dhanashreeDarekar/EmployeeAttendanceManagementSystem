@@ -21,25 +21,27 @@ public class AttendanceService {
 		this.attendancerepo = attendancerepo;
 	}
 	
-	Attendance_Cls att ;
-	int aid = 0;
-	public void apply_Attendance(AttendanceRequest request) {
+
+
+	public void apply_Attendance(Attendance_Cls request) {
 		
-		int aid = request.getAtt_emp_id();
-		att.setAtt_id(aid);
-		 attendancerepo.save(att);
+//		int aid = request.getAtt_emp_id();
+//		att.setAtt_id(aid);
+		 attendancerepo.save(request);
 	}
 	
 	public Optional<Attendance_Cls> findAttendanceById(int emp_id) {
-		if(emp_id == att.getAtt_id()) {
-			aid = att.getAtt_id();
-		}
-		return attendancerepo.findById(aid);
-		
+
+		return attendancerepo.findById(emp_id);
+
 	}
 	
 	public List<Attendance_Cls> viewAttend(){
 		return  attendancerepo.findAll();
+	}
+
+	public List<Attendance_Cls> viewByEmpId(int empid) {
+		return attendancerepo.findAllByEmployee_EmpId(empid);
 	}
 }
 

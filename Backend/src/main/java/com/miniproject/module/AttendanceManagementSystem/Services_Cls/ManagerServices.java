@@ -74,7 +74,6 @@ public class ManagerServices {
 	public Optional<Leave> getLeaveByEmpid(int empid) {
 		return leaveservice.findEmpLeaveById(empid);
 	}
-	
 	public void  LeaveStatus(LeaveRequest request) {
 		leaveservice.LeaveEmpStatus(request);
 	}

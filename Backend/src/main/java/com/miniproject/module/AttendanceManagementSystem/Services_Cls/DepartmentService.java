@@ -20,8 +20,8 @@ import com.miniproject.module.AttendanceManagementSystem.Entity.Employee;
 @Component
 public class DepartmentService {
 
-	@Autowired
-	private DepartmentRepo deptrepo;
+	private final DepartmentRepo deptrepo;
+
 //	@Bean
 //	public DepartmentRepo deptrepo(){return new DepartmentRepo()}
 
@@ -29,9 +29,7 @@ public class DepartmentService {
 	public DepartmentService(DepartmentRepo deptrepo) {
 		this.deptrepo =deptrepo;
 	}
-	public DepartmentService(){
-//		deptrepo = new D
-	}
+
 	public List<Department> finAllDept() {
 		System.out.println("Deparntment Service");
 
@@ -45,10 +43,18 @@ public class DepartmentService {
 	public Optional<Department> AllEmployees(int dept_id) {
 		return deptrepo.findById(dept_id);
 	}
-	
+
+	public void deleteDepartment(int deptid) {
+		deptrepo.deleteById(deptid);
+	}
+
+	public Department addDept(Department department) {
+		return deptrepo.save(department);
+	}
+
 //	EmployeeService empser = new EmployeeService();
 	
 //	public List<Employee> findEmployeesByDeptId(int deptid){
-//		return (List<Employee>) empser.findEmployeeByDeptId(deptid);
+//		return (List<Employee>) empservice.findByDeptId(deptid);
 //	}
 }

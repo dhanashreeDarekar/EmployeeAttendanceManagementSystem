@@ -11,7 +11,7 @@ public class Department {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(nullable = false , updatable = false)
-	private int dept_id;
+	private int deptid;
 	private String dept_name;
 	private int dept_total_employee;
 	@OneToMany(mappedBy = "department" , cascade=CascadeType.REMOVE)
@@ -22,11 +22,11 @@ public class Department {
 	}
 
 	public int getDept_id() {
-		return dept_id;
+		return deptid;
 	}
 
 	public void setDept_id(int dept_id) {
-		this.dept_id = dept_id;
+		this.deptid = dept_id;
 	}
 
 	public String getDept_name() {
@@ -47,7 +47,7 @@ public class Department {
 
 	public Department(int dept_id, String dept_name, int dept_total_employee) {
 		super();
-		this.dept_id = dept_id;
+		this.deptid = dept_id;
 		this.dept_name = dept_name;
 		this.dept_total_employee = dept_total_employee;
 	}

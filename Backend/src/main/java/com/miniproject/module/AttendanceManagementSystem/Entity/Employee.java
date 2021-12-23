@@ -24,7 +24,7 @@ public class Employee implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO  )
 	@Column(nullable = false , updatable = false)
-	private int emp_id;
+	private int empId;
 	private String emp_name;
 	private String emp_designation;
 	private Date emp_doj = new Date();
@@ -40,7 +40,7 @@ public class Employee implements Serializable{
 //		return new EmployeeService();
 //	}
 	Employee(int emp_id , String emp_name,Department department ,String emp_designation , Date emp_doj , int emp_deptment , String emp_mobile , String emp_email ){
-		this.emp_id = emp_id ;
+		this.empId = emp_id ;
 		this.emp_name = emp_name ;
 		this.emp_designation = emp_designation;
 		this.emp_doj = emp_doj;
@@ -65,11 +65,11 @@ public class Employee implements Serializable{
 	}
 */
 	public int getEmp_id() {
-		return emp_id;
+		return empId;
 	}
 
 	public void setEmp_id(int l) {
-		this.emp_id = l;
+		this.empId = l;
 	}
 
 	public String getEmp_name() {
@@ -126,13 +126,13 @@ public class Employee implements Serializable{
 		this.department = department;
 	}
 
-	public Set<Attendance_Cls> getAttc() {
-		return attc;
-	}
-
-	public void setAttc(Set<Attendance_Cls> attc) {
-		this.attc = attc;
-	}
+//	public Set<Attendance_Cls> getAttc() {
+//		return attc;
+//	}
+//
+//	public void setAttc(Set<Attendance_Cls> attc) {
+//		this.attc = attc;
+//	}
 
 	@OneToMany(mappedBy = "employee" , cascade=CascadeType.REMOVE)
    // @JoinColumn(name = "att_id")
@@ -160,7 +160,7 @@ public class Employee implements Serializable{
 	@Override
 	public String toString() {
 		
-		return " Employee{" +" id = " + emp_id +
+		return " Employee{" +" id = " + empId +
 				", name = "+ emp_name +  " / " + 
 				" , Designation = " + emp_designation + '/' +
 				" ,  Date _of_Joining = " + emp_doj + '/' +

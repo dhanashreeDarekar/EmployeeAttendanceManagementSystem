@@ -1,8 +1,10 @@
 package com.miniproject.module.AttendanceManagementSystem.controllers;
 
 
+import java.util.List;
 import java.util.Optional;
 
+import com.miniproject.module.AttendanceManagementSystem.Entity.*;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
@@ -15,10 +17,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.miniproject.module.AttendanceManagementSystem.Entity.AttendanceRequest;
-import com.miniproject.module.AttendanceManagementSystem.Entity.Employee;
-import com.miniproject.module.AttendanceManagementSystem.Entity.Leave;
-import com.miniproject.module.AttendanceManagementSystem.Entity.LeaveRequest;
 //import com.miniproject.module.AttendanceManagementSystem.Entity.Login;
 
 import com.miniproject.module.AttendanceManagementSystem.Services_Cls.AttendanceService;
@@ -57,26 +55,28 @@ public class EmployeeController {
 	}
 	
 	@PostMapping("/markattendance")
-	public String markAttendance(@RequestBody  AttendanceRequest request) {
+	public String markAttendance(@RequestBody Attendance_Cls request) {
 			attendanceservice.apply_Attendance(request);
 			return "Attendance Mark Successfully ";
 	}
 	
-//	@PostMapping("/appyleave")
-//	public String ApplyForLeave(@RequestBody LeaveRequest request ) {
-//		return empservice.applyForLeave(request);
-//	}
+	@PostMapping("/appyleave")
+	public ResponseEntity<Leave> ApplyForLeave(@RequestBody Leave request ) {
+		System.out.println("Hello");
+		Leave lv =  empservice.applyForLeave(request);
+		return new ResponseEntity<>(lv , HttpStatus.CREATED);
+	}
 //
-//	@GetMapping("/applyleave/{empid}")
-//	public ResponseEntity<Leave> ViewStatusForLeave(@PathVariable("empid") int empid) {
-//		Optional<Leave> l = empservice.viewStatus(empid);
+	@GetMapping("/getAllleave/{empid}")
+	public ResponseEntity<List<Leave>> ViewStatusForLeave(@PathVariable("empid") int empid) {
+		List<Leave> l = empservice.viewStatus(empid);
 //		Leave lv;
 //		if(l.isPresent())
 //		lv= l.get();
 //		else
 //			lv = null;
-//		return new ResponseEntity<>(lv,HttpStatus.OK);
-//	}
+		return new ResponseEntity<>(l,HttpStatus.OK);
+	}
 /*	
 	@PatchMapping("/change/{password}")
 		public ResponseEntity<Employee> changePass(@PathVariable("password") String password){

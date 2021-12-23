@@ -1,11 +1,15 @@
 package com.miniproject.module.AttendanceManagementSystem.Services_Cls;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
 
+import com.miniproject.module.AttendanceManagementSystem.Entity.Leave;
+import com.miniproject.module.AttendanceManagementSystem.Entity.LeaveRequest;
 import com.miniproject.module.AttendanceManagementSystem.Repository_Cls.EmpRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -20,15 +24,15 @@ public class EmployeeService {
 	private final EmpRepo emprepo;
 	
 //	@Autowired
-//	private final LeaveService leaveservice;
+	private final LeaveService leaveservice;
 	
 //	@Autowired
 //	private ManagerServices managerservice;
 	@Autowired
-	public EmployeeService(EmpRepo emprepo )
+	public EmployeeService(@Lazy EmpRepo emprepo,@Lazy LeaveService leaveservice )
 	{
 		this.emprepo = emprepo;
-//		this.leaveservice = leaveservice;
+		this.leaveservice = leaveservice;
 	}
 //	public EmployeeService() {
 //
@@ -53,15 +57,19 @@ public class EmployeeService {
 //		return emprepo.findByEmail(emp_email);
 //	}
 	
-//	public String applyForLeave(LeaveRequest request) {
-//		int eid = request.getLeave_emp_id();
-//		//managerservice.showLeaves(eid);
-//		return leaveservice.applyLeave(request);
-//	}
+	public Leave applyForLeave(Leave request) {
+		int eid = request.getLeave_id();
+		//managerservice.showLeaves(eid);
+		return leaveservice.applyLeave(request);
+	}
 	
-//	public Optional<Leave> viewStatus(int empid){
-//		return leaveservice.checkStatus(empid);
-//	}
+	public List<Leave> viewStatus(int empid){
+		return leaveservice.checkStatus(empid);
+	}
+
+	public List<Employee> findEmployeesByDeptId(int deptid) {
+		return emprepo.findAllByDepartment_Deptid(deptid);
+	}
 /*	
 	public Leaves showLeave(LeaveRequest request) {
 		

@@ -9,6 +9,7 @@ import com.miniproject.module.AttendanceManagementSystem.Entity.Leave;
 import com.miniproject.module.AttendanceManagementSystem.Entity.LeaveRequest;
 
 import com.miniproject.module.AttendanceManagementSystem.Repository_Cls.LeaveRepo;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -19,21 +20,20 @@ import javax.transaction.Transactional;
 @Component
 public class LeaveService {
 
-	@Autowired
-	private LeaveRepo leaverepo;
+	private final LeaveRepo leaverepo;
 	
 	public LeaveService(LeaveRepo leaverepo) {
 		this.leaverepo = leaverepo;
 	}
 
 	Leave ll ;
-	public String applyLeave(LeaveRequest request) {
+	public Leave applyLeave(Leave request) {
 		
-		int eid = request.getLeave_emp_id() ;
-		ll.setLeave_id(eid);
-		leaverepo.save(ll);
+//		int eid = request.getLeave_id() ;
+//		ll.setLeave_id(eid);
+		leaverepo.save(request);
 		
-		return " Applied Leave SuccessFully !!!!";
+		return request;
 	}
 	
 	public List<Leave> viewLeaves(){
@@ -50,7 +50,29 @@ public class LeaveService {
 //		leaverepo.LeaveStatus(leave_approved , leave_emp_id);
 	}
 	
-	public Optional<Leave> checkStatus(int empid) {
-		return leaverepo.findById(empid);
+	public List<Leave> checkStatus(int empid) {
+		List<Leave> L =  leaverepo.findAllByEmployee_EmpId(empid);
+
+		return L;
+	}
+
+	public List<Leave> getLeaveByAccepted() {
+		return leaverepo.findAllByApproved(true);
+	}
+
+	public List<Leave> getLeaveByNotAccepted() {
+		return leaverepo.findAllByApproved(false);
+	}
+
+	public Leave approveLeave(int leaveid) {
+		Optional<Leave> ll = leaverepo.findById(leaveid);
+		if(ll.isPresent()){
+			Leave lv = ll.get();
+			lv.setLeave_approved(true);
+			leaverepo.save(lv);
+			return lv;
+		}
+		else
+			return null;
 	}
 }

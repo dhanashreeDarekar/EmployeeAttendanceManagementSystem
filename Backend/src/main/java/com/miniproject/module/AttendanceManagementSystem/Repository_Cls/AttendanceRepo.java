@@ -8,7 +8,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.miniproject.module.AttendanceManagementSystem.Entity.Attendance_Cls;
 
 public interface AttendanceRepo extends JpaRepository<Attendance_Cls , Integer> {
-	//int findById(int id);
+    List<Attendance_Cls> findAllByEmployee_EmpId(int empid);
+    //int findById(int id);
 
 	
 }
