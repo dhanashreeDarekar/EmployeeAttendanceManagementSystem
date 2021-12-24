@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.miniproject.module.AttendanceManagementSystem.Services_Cls.AttendanceService;
 import com.miniproject.module.AttendanceManagementSystem.Services_Cls.EmployeeService;
 //import Services_Cls.LoginService;
-
+@CrossOrigin("http://localhost:4200")
 @Configuration
 @RestController
 @RequestMapping("/employee/")

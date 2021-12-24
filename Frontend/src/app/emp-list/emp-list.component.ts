@@ -1,5 +1,7 @@
+import { AllEmployees } from './../allEmployee';
 import { EmpListService } from './../services/emp-list.service';
 import { Component, OnInit } from '@angular/core';
+ import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-emp-list',
@@ -8,19 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmpListComponent implements OnInit {
 
-  employees:any;
+  employees:any[]=[];
 
   constructor(private service:EmpListService) { }
 
   ngOnInit(): void {
+    this.retrieveEmployees();
+  }
+
+  retrieveEmployees():void{
     this.service.getAllEmployees()
     .subscribe(
-      data => {
+      (data) =>{
+        console.log(data);
         this.employees = data;
-      },
-      error =>
-      alert(error)
-    )
+        
+      }
+      
+    );
   }
 
 }

@@ -10,7 +10,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LeaveApplyComponent } from './leave-apply/leave-apply.component';
 
 const routes: Routes = [
-  {path:'',component:LoginComponent},
+  // {path:'',component:LoginComponent},
   {path:'overview',component:OverviewComponent},
   {path:'login',component:LoginComponent}, 
   {path:'profile',component:ProfileComponent},
@@ -21,7 +21,7 @@ const routes: Routes = [
   {path:'emp-list',component:EmpListComponent},
 
   
-  {path:'**',redirectTo:''}
+  // {path:'**',redirectTo:''}
 ];
 
 @NgModule({

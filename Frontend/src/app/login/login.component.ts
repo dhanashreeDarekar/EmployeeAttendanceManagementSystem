@@ -12,7 +12,6 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  emps:any;
 
   user ={
     username:'',
@@ -28,32 +27,19 @@ export class LoginComponent implements OnInit {
 
   public login(){
     
-    let response = this.service.validateLogin(this.user)
-    response.subscribe(data=>{
-      this.emps = 200;
-      if(this.emps==200){
-        // alert(data);
+
+    this.service.validateLogin(this.user).subscribe(data=>{
+      if(data==200){
         // alert("logged in succesfully..");
-        // this.isError=true;
-        this.router.navigate(['/emp-list']);
+        this.isError=true;
+        this.router.navigate(['emp-list']);
 
       }
-    },err=>{
-      this.isError=false;
     }
-    )
-
-    // this.service.validateLogin(this.user).subscribe(data=>{
-    //   if(data==200){
-    //     // alert("logged in succesfully..");
-    //     // this.isError=true;
-    //     this.router.navigate(['/emp-list']);
-
-    //   }
-    // },err=>{
+    // ,err=>{
     //   this.isError=false;
     // }
-    // )
+    )
 
   }
 

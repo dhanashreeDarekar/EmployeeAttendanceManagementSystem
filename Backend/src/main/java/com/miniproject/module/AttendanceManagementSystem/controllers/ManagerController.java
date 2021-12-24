@@ -20,9 +20,10 @@ import org.springframework.web.bind.annotation.*;
 import javax.persistence.PostUpdate;
 
 //@Component
+@CrossOrigin("http://localhost:4200")
 @Configuration
 @RestController
-@RequestMapping("/manager")
+@RequestMapping("/manager/")
 public class ManagerController {
 
 	private final ManagerServices managerservices;
