@@ -23,15 +23,13 @@ public class EmployeeService {
 
 	private final EmpRepo emprepo;
 	
-<<<<<<< HEAD
 //	@Autowired
 	private final LeaveService leaveservice;
 	
 //	@Autowired
 //	private ManagerServices managerservice;
-=======
-//	
->>>>>>> 6fb99a9 (updated fe and be)
+
+	
 	@Autowired
 	public EmployeeService(@Lazy EmpRepo emprepo,@Lazy LeaveService leaveservice )
 	{

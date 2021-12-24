@@ -27,14 +27,12 @@ public class ManagerController {
 
 	private final ManagerServices managerservices;
 	private final DepartmentService deptservice ;
-<<<<<<< HEAD
 	private final LeaveService leaveService;
 	private final EmployeeService employeeService;
 	private final AttendanceService attendanceService;
-	public ManagerController(@Lazy ManagerServices managerservices , @Lazy DepartmentService deptservice, @Lazy LeaveService leaveService,@Lazy EmployeeService employeeService,@Lazy AttendanceService attendanceService) {
-=======
-	public ManagerController(@Lazy ManagerServices managerservices ,@Lazy DepartmentService deptservice) {
->>>>>>> 6fb99a9 (updated fe and be)
+	
+
+	public ManagerController(@Lazy ManagerServices managerservices ,@Lazy DepartmentService deptservice,@Lazy LeaveService leaveService,@Lazy EmployeeService employeeService,@Lazy AttendanceService attendanceService) {
 		this.managerservices = managerservices;
 		this.deptservice = deptservice;
 		this.leaveService = leaveService;
