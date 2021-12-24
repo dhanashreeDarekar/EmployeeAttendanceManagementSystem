@@ -40,6 +40,7 @@ public class ManagerController {
 		this.attendanceService = attendanceService;
 	}
 
+	//get all employees
 	@GetMapping("/all")
 	public ResponseEntity<List<Employee>> getAllEmployee(){
 		List<Employee> emp = managerservices.findAllEmployee();

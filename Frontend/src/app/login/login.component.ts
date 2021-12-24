@@ -1,3 +1,4 @@
+import { EmpListComponent } from './../emp-list/emp-list.component';
 import { LoginService } from './../services/login.service';
 
 import { Component, OnInit } from '@angular/core';
@@ -11,6 +12,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  emps:any;
+
   user ={
     username:'',
     password:''
@@ -23,17 +26,34 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  login(){
+  public login(){
     
-    this.service.validateLogin(this.user).subscribe(data=>{
-      if(data==200){
-        this.isError=true;
-        this.router.navigateByUrl('/profile');
+    let response = this.service.validateLogin(this.user)
+    response.subscribe(data=>{
+      this.emps = 200;
+      if(this.emps==200){
+        // alert(data);
+        // alert("logged in succesfully..");
+        // this.isError=true;
+        this.router.navigate(['/emp-list']);
+
       }
     },err=>{
       this.isError=false;
     }
     )
+
+    // this.service.validateLogin(this.user).subscribe(data=>{
+    //   if(data==200){
+    //     // alert("logged in succesfully..");
+    //     // this.isError=true;
+    //     this.router.navigate(['/emp-list']);
+
+    //   }
+    // },err=>{
+    //   this.isError=false;
+    // }
+    // )
 
   }
 

@@ -43,7 +43,7 @@ import { EmpListComponent } from './emp-list/emp-list.component';
     NgbModule,
     FormsModule
   ],
-  providers: [LoginService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

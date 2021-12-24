@@ -45,27 +45,27 @@ public class EmployeeController {
 		return new ResponseEntity<>(emp , HttpStatus.OK);
 	}
 	
-	@PutMapping("/updates")
+	@PutMapping("/update")
 	public ResponseEntity<Employee> updateEmp(@RequestBody Employee emp){
 		Employee ee = empservice.updateEmployee(emp);
 		return new ResponseEntity<>(ee , HttpStatus.OK);
 	}
 	
-	@PostMapping("/markattendance")
+	@PostMapping("/markAttendance")
 	public String markAttendance(@RequestBody Attendance_Cls request) {
 			attendanceservice.apply_Attendance(request);
 			return "Attendance Mark Successfully ";
 	}
 	
 
-	@PostMapping("/appyleave")
+	@PostMapping("/appyLeave")
 	public ResponseEntity<Leave> ApplyForLeave(@RequestBody Leave request ) {
 		System.out.println("Hello");
 		Leave lv =  empservice.applyForLeave(request);
 		return new ResponseEntity<>(lv , HttpStatus.CREATED);
 	}
 	
-	@GetMapping("/getAllleave/{empid}")
+	@GetMapping("/getAllLeaves/{empid}")
 	public ResponseEntity<List<Leave>> ViewStatusForLeave(@PathVariable("empid") int empid) {
 		List<Leave> l = empservice.viewStatus(empid);
 //		Leave lv;

@@ -10,17 +10,40 @@ import { Injectable } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
+  currentProfile:any;
   
-
-  constructor() { }
+  constructor(private service:ProfileService) { }
 
   ngOnInit(): void {
+    // this.getProfileDetails(id);
   }
 
-  // getProfileDetails(){
-  //   this.service.getProfileDetails().subscribe(data=>{
-  //     this.profile = data;
-  //   })
+  getProfileDetails(id:number):void{
+
+    //get the profile data from id of current employee
+    this.service.getProfileDetails(id).subscribe(
+      data =>{
+        this.currentProfile = data;
+        console.log(data);
+      },
+      error =>{
+        console.log(error);
+      }
+    )
+  }
+
+  // updateProfile():void {
+  //   this.service.update(this.currentProfile.id,this.currentProfile)
+  //   .subscribe(
+  //     response =>{
+  //       console.log(response);
+  //       this.message = "Profile Updated Succesfully";
+  //     },
+  //     error => {
+  //       console.log(error);
+  //     }
+  //   )
   // }
+
 
 }
