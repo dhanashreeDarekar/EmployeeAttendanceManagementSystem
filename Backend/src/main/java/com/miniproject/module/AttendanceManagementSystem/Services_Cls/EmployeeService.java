@@ -23,20 +23,25 @@ public class EmployeeService {
 
 	private final EmpRepo emprepo;
 	
+<<<<<<< HEAD
 //	@Autowired
 	private final LeaveService leaveservice;
 	
 //	@Autowired
 //	private ManagerServices managerservice;
+=======
+//	
+>>>>>>> 6fb99a9 (updated fe and be)
 	@Autowired
 	public EmployeeService(@Lazy EmpRepo emprepo,@Lazy LeaveService leaveservice )
 	{
 		this.emprepo = emprepo;
 		this.leaveservice = leaveservice;
 	}
-//	public EmployeeService() {
-//
-//	}
+	public void addEmployee(Employee emp1) {
+		emprepo.save(emp1);
+	}
+
 	public Employee updateEmployee(Employee emp) {
 		return emprepo.save(emp);
 	}

@@ -22,11 +22,12 @@ import java.util.*;
 @Table(name ="Employee")
 public class Employee implements Serializable{
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO  )
+	@GeneratedValue(strategy = GenerationType.IDENTITY  )
 	@Column(nullable = false , updatable = false)
 	private int empId;
 	private String emp_name;
 	private String emp_designation;
+<<<<<<< HEAD
 	private Date emp_doj = new Date();
 	//private int emp_dept_id;
 	private String emp_mobile;
@@ -50,11 +51,33 @@ public class Employee implements Serializable{
 		this.emp_email = emp_email;
 	//	this.empcode = empcode;
 //		this.emp_password = emp_password;
+=======
+//	private Date emp_doj = new Date();
+	private String emp_doj ;
+	private int emp_dept_id;
+	private String emp_mobile;
+	private String emp_email;
+
+
+	
+
+	public Employee(int emp_id, String emp_name, String emp_designation, String emp_doj, int emp_dept_id,
+			String emp_mobile, String emp_email) {
+		super();
+		this.emp_id = emp_id;
+		this.emp_name = emp_name;
+		this.emp_designation = emp_designation;
+		this.emp_doj = emp_doj;
+		this.emp_dept_id = emp_dept_id;
+		this.emp_mobile = emp_mobile;
+		this.emp_email = emp_email;
+>>>>>>> 6fb99a9 (updated fe and be)
 	}
 
 	public Employee() {
 
 	}
+<<<<<<< HEAD
 /*	public String getPassword()
 	{
 		return emp_password;
@@ -64,6 +87,9 @@ public class Employee implements Serializable{
 		this.emp_password = pass;
 	}
 */
+=======
+
+>>>>>>> 6fb99a9 (updated fe and be)
 	public int getEmp_id() {
 		return empId;
 	}
@@ -88,11 +114,11 @@ public class Employee implements Serializable{
 		this.emp_designation = emp_designation;
 	}
 
-	public Date getEmp_doj() {
+	public String getEmp_doj() {
 		return emp_doj;
 	}
 
-	public void setEmp_doj(Date emp_doj) {
+	public void setEmp_doj(String emp_doj) {
 		this.emp_doj = emp_doj;
 	}
 
@@ -141,11 +167,21 @@ public class Employee implements Serializable{
     @OneToMany(mappedBy = "employee" , cascade=CascadeType.REMOVE)
    // @JoinColumn(name = "emp_id")
     private Set<Leave> leaves = new HashSet<>();
+
+
+	@Override
+	public String toString() {
+		return "Employee [emp_id=" + emp_id + ", emp_name=" + emp_name + ", emp_designation=" + emp_designation
+				+ ", emp_doj=" + emp_doj + ", emp_dept_id=" + emp_dept_id + ", emp_mobile=" + emp_mobile
+				+ ", emp_email=" + emp_email + ", department=" + department + ", attc=" + attc + ", leaves=" + leaves
+				+ "]";
+	}
     
     @OneToOne(fetch = FetchType.LAZY,
             cascade =  CascadeType.ALL,
             mappedBy = "employee")
 //    @JoinColumn(name = "login_id")
+<<<<<<< HEAD
     private Login login;
 /*
 	public void setEmpcode(String empcode) {
@@ -169,4 +205,10 @@ public class Employee implements Serializable{
 				", Email = " + emp_email + '/' +
 				"}; " ;
 	}
+=======
+//    private Login login;
+
+	
+	
+>>>>>>> 6fb99a9 (updated fe and be)
 }

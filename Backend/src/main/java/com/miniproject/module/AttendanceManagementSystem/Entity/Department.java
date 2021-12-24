@@ -9,13 +9,18 @@ import java.util.Set;
 public class Department {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(nullable = false , updatable = false)
 	private int deptid;
 	private String dept_name;
+<<<<<<< HEAD
 	private int dept_total_employee;
 	@OneToMany(mappedBy = "department" , cascade=CascadeType.REMOVE)
 	//@JoinColumn(name = "dept_id")
+=======
+	@OneToMany
+	@JoinColumn(name = "dept_id")
+>>>>>>> 6fb99a9 (updated fe and be)
 	private Set<Employee> employees= new HashSet<>();
 	public Department() {
 
@@ -37,19 +42,19 @@ public class Department {
 		this.dept_name = dept_name;
 	}
 
-	public int getDept_total_employee() {
-		return dept_total_employee;
-	}
+//	public int getDept_total_employee() {
+//		return dept_total_employee;
+//	}
+//
+//	public void setDept_total_employee(int dept_total_employee) {
+//		this.dept_total_employee = dept_total_employee;
+//	}
 
-	public void setDept_total_employee(int dept_total_employee) {
-		this.dept_total_employee = dept_total_employee;
-	}
-
-	public Department(int dept_id, String dept_name, int dept_total_employee) {
+	public Department(int dept_id, String dept_name) {
 		super();
 		this.deptid = dept_id;
 		this.dept_name = dept_name;
-		this.dept_total_employee = dept_total_employee;
+//		this.dept_total_employee = dept_total_employee;
 	}
 	
 //	@OneToMany

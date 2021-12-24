@@ -4,7 +4,11 @@ package com.miniproject.module.AttendanceManagementSystem.controllers;
 import java.util.List;
 import java.util.Optional;
 
+<<<<<<< HEAD
 import com.miniproject.module.AttendanceManagementSystem.Entity.*;
+=======
+import org.springframework.beans.factory.annotation.Autowired;
+>>>>>>> 6fb99a9 (updated fe and be)
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
@@ -25,11 +29,12 @@ import com.miniproject.module.AttendanceManagementSystem.Services_Cls.EmployeeSe
 
 @Configuration
 @RestController
-@RequestMapping("/Employee")
+@RequestMapping("/employee/")
 public class EmployeeController {
 
-
+	
 	private final AttendanceService attendanceservice;
+	@Autowired
 	private final EmployeeService empservice;
 
 	public EmployeeController(@Lazy AttendanceService attendanceservice, @Lazy EmployeeService empservice) {
@@ -37,10 +42,13 @@ public class EmployeeController {
 		this.empservice = empservice;
 		
 	}
-//	public EmployeeController()
-//	{
-//
+	
+//	@PostMapping("/addEmployee")
+//	public String addEmployee(@RequestBody Employee emp1) {
+//		empservice.addEmployee(emp1);
+//		return "Employee added succesfully";
 //	}
+
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Optional<Employee>> getInformation(@PathVariable("id") int id){
@@ -60,12 +68,24 @@ public class EmployeeController {
 			return "Attendance Mark Successfully ";
 	}
 	
+<<<<<<< HEAD
 	@PostMapping("/appyleave")
 	public ResponseEntity<Leave> ApplyForLeave(@RequestBody Leave request ) {
 		System.out.println("Hello");
 		Leave lv =  empservice.applyForLeave(request);
 		return new ResponseEntity<>(lv , HttpStatus.CREATED);
 	}
+=======
+	
+	
+	
+	
+	
+//	@PostMapping("/appyleave")
+//	public String ApplyForLeave(@RequestBody LeaveRequest request ) {
+//		return empservice.applyForLeave(request);
+//	}
+>>>>>>> 6fb99a9 (updated fe and be)
 //
 	@GetMapping("/getAllleave/{empid}")
 	public ResponseEntity<List<Leave>> ViewStatusForLeave(@PathVariable("empid") int empid) {

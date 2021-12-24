@@ -13,16 +13,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
 public class Login {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(nullable = false , updatable = false)
 	private int login_id ;
 	private String username ;
 	private String password;
+
+	
 
 	public Login() {
 	}
@@ -33,17 +36,6 @@ public class Login {
 		this.login_id = login_id;
 		this.employee = employee;
 	}
-
-/*
-	public void configure(HttpSecurity http) throws Exception {
-	    http
-	        .authorizeRequests()
-	        .anyRequest().authenticated()
-	        .and()
-	        .formLogin()
-	        .and()
-	        .httpBasic();
-	}*/
 
 	public int getLogin_id() {
 		return login_id;
