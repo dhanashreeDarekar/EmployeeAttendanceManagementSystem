@@ -6,16 +6,31 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProfileService {
-  private url = "http://localhost:9002/employee/";
+  private url = "http://localhost:9001/employee/";
+  private updateUrl = "http://localhost:9001/employee/update";
 
   constructor(private http:HttpClient) { }
 
-  public getProfileDetails(id:number){
-    return this.http.get("http://localhost:9002/employee/"+id)
+  // public getProfileDetails(id:number){
+  //   return this.http.get("http://localhost:9001/employee/"+id)
+  // }
+
+  getProfileDetails(id:number): Observable<any> {
+    return this.http.get<any>(this.url+id);
   }
 
+  // updateProfileDetails(id:number,data:any): Observable<any> {
+  //   return this.http.put<any>(this.url+"update/"+id,data);
+  // }
+
+    //get the profile for 1 employee
+    updateProfileDetails(id:number,data:any): Observable<any> {
+    return this.http.put(`${this.updateUrl}/${id}`,data);
+  }
+
+
   // public updateProfileDetails(id:number){
-  //   return this.http.put("http://localhost:9002/employee/"+id)
+  //   return this.http.put("http://localhost:9001/employee/"+id)
   // }
 
 

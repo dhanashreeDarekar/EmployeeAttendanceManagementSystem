@@ -10,40 +10,64 @@ import { Injectable } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  currentProfile:any;
-  
+
+  currentProfile ={
+    emp_id:"",
+    emp_name:"",
+	  emp_designation:"",
+    emp_mobile:"",
+    emp_doj:"",
+	  emp_email:"",
+    department:{
+        deptid:"",
+        dept_name:""
+    }
+  }
+
+  id:any = localStorage.getItem("userId");
+
   constructor(private service:ProfileService) { }
 
   ngOnInit(): void {
-    // this.getProfileDetails(id);
+    this.getProfileDetails(this.id);
   }
 
+  //GET PROFILE DETAILS
   getProfileDetails(id:number):void{
-
-    //get the profile data from id of current employee
-    this.service.getProfileDetails(id).subscribe(
+    this.service.getProfileDetails(id)
+    .subscribe(
       data =>{
+        // console.log(id);
+        // console.log(data)
         this.currentProfile = data;
-        console.log(data);
+        
       },
       error =>{
-        console.log(error);
+        alert(error)
       }
-    )
+      
+    );
   }
 
-  // updateProfile():void {
-  //   this.service.update(this.currentProfile.id,this.currentProfile)
-  //   .subscribe(
-  //     response =>{
-  //       console.log(response);
-  //       this.message = "Profile Updated Succesfully";
-  //     },
-  //     error => {
-  //       console.log(error);
-  //     }
-  //   )
-  // }
+
+  //UPDATE PROFILE DETAILS
+  updateProfileDetails():void{
+    // alert(this.currentProfile.emp_name)
+    this.service.updateProfileDetails(this.id,this.currentProfile)
+    .subscribe(
+      data =>{
+        console.log(this.id);
+        console.log(data)
+        // this.currentProfile = data;
+        
+      },
+      error =>{
+        alert(error)
+      }
+      
+    );
+  }
+
 
 
 }

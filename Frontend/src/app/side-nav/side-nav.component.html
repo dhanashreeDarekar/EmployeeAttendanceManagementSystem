@@ -1,8 +1,14 @@
+<div *ngIf="isEmployee">
+    
+
+
+
 <div class="container side-nav-custom w-100">
   <div class="row">
     <div class=" col card mx-auto text-center" style="max-width: 75% ;">
       <img class="img-thumbnail mx-auto rounded"src="https://styles.redditmedia.com/t5_31m8g/styles/communityIcon_ytz903nfwl211.png?width=256&s=7a20933ce6b781d940e1a9a4e9248fd3443474aa" width="70px" height="auto"  alt="Profile Image">
         <div class="card-body">
+          <p>Employee Id: {{userId}}</p>
           <p>Employee name</p>
           <p>Designation</p>
       </div>
@@ -12,29 +18,34 @@
     <nav>
       <ul class="nav flex-column ">
         <li class="nav-item   mt-2">
-          <a class="nav-link " routerLink="overview">Overview</a>
+          <a class="nav-link " routerLink="/overview">Overview</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link"  routerLink="profile" >Profile</a>
+          <a class="nav-link"  routerLink="/profile" >Profile</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link"  routerLink="attendance" >Attendance</a>
+          <a class="nav-link"  routerLink="/attendance" >Attendance</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" routerLink="leaves">Leave</a>
+          <a class="nav-link" routerLink="/leaves">Leave</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" routerLink="emp-list">Employee List</a>
+          <a class="nav-link" routerLink="/emp-list">Employee List</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link"routerLink="leave-approve">Approve Leaves</a>
+          <a class="nav-link" routerLink="/leave-approve">Approve Leaves</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" routerLink="leave-apply" >Request Leave</a>
+          <a class="nav-link" routerLink="/leave-apply" >Request Leave</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" routerLink="/add-emp" >Add Employee</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" routerLink="/mark-attendance" >Mark Attendance</a>
         </li>
         <li class="nav-item ">
           <a class="nav-link disabled" href="#">Holidays</a>
-          
         </li>
       </ul>
     </nav>
@@ -42,7 +53,7 @@
 
 </div>
 
-
+</div>
 
 
 <!-- <nav id="side-nav" class=" d-lg-block">

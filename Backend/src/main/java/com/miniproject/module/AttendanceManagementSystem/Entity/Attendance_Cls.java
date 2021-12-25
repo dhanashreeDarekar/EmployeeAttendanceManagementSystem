@@ -12,14 +12,14 @@ public class Attendance_Cls {
 	private int att_id;
 	//private int att_emp_id;
 	private int attend_totals_days;
-	private int att_month;
-	private Date date_form = new Date();
-	private Date att_date_to = new Date();
+	private String att_month;
+	private String date_form ;
+	private String att_date_to;
 	private int total_att_marked;
 	private int att_not_marked;
 	
-	public Attendance_Cls(int att_id, int attend_totals_days, int att_month, Date date_form,
-			Date att_date_to, int total_att_marked, int att_not_marked , Employee employee) {
+	public Attendance_Cls(int att_id, int attend_totals_days, String att_month, String date_form,
+			String att_date_to, int total_att_marked, int att_not_marked , Employee employee) {
 		super();
 		this.att_id = att_id;
 	//	this.att_emp_id = att_emp_id;
@@ -55,22 +55,22 @@ public class Attendance_Cls {
 	public void setAttend_totals_days(int attend_totals_days) {
 		this.attend_totals_days = attend_totals_days;
 	}
-	public int getAtt_month() {
+	public String getAtt_month() {
 		return att_month;
 	}
-	public void setAtt_month(int att_month) {
+	public void setAtt_month(String att_month) {
 		this.att_month = att_month;
 	}
-	public Date getDate_form() {
+	public String getDate_form() {
 		return date_form;
 	}
-	public void setDate_form(Date date_form) {
+	public void setDate_form(String date_form) {
 		this.date_form = date_form;
 	}
-	public Date getAtt_date_to() {
+	public String getAtt_date_to() {
 		return att_date_to;
 	}
-	public void setAtt_date_to(Date att_date_to) {
+	public void setAtt_date_to(String att_date_to) {
 		this.att_date_to = att_date_to;
 	}
 	public int getTotal_att_marked() {

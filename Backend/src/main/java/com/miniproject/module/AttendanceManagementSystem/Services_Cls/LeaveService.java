@@ -57,22 +57,36 @@ public class LeaveService {
 	}
 
 	public List<Leave> getLeaveByAccepted() {
-		return leaverepo.findAllByApproved(true);
+		return leaverepo.findAllByApproved(1);
 	}
 
 	public List<Leave> getLeaveByNotAccepted() {
-		return leaverepo.findAllByApproved(false);
+		return leaverepo.findAllByApproved(0);
 	}
 
 	public Leave approveLeave(int leaveid) {
 		Optional<Leave> ll = leaverepo.findById(leaveid);
 		if(ll.isPresent()){
 			Leave lv = ll.get();
-			lv.setLeave_approved(true);
+			lv.setLeave_approved(1);
 			leaverepo.save(lv);
 			return lv;
 		}
 		else
 			return null;
 	}
+	
+	public Leave declinedLeave(int leaveid) {
+		Optional<Leave> ll = leaverepo.findById(leaveid);
+		if(ll.isPresent()){
+			Leave lv = ll.get();
+			lv.setLeave_approved(-1);
+			leaverepo.save(lv);
+			return lv;
+		}
+		else
+			return null;
+	}
+	
+	
 }

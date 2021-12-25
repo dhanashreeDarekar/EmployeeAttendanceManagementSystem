@@ -1,57 +1,85 @@
-<section id="profile" class="profile-custom mt-3 p-5">
-    
-  <div class="container">
-    <form>
-            <div class="form-heading mb-2">
-              <!-- Form Heading -->
-                <h3>Profile</h3>
-            </div>
-            <div class="form-row" >
-              <!-- Form body -->
-                <div class="form-group col-md-6" >
-                  <label for="emp_name">Name</label>
-                  <input type="text" [(ngModel)]="currentProfile.emp_name" class="form-control" id="emp_name" placeholder="Name">
-                </div>
-                <div class="form-group col-md-6" >
-                    <label for="emp_id">Employee ID</label>
-                    <input type="text" [(ngModel)]="currentProfile.emp_id" class="form-control" id="emp_id" placeholder="Employee ID">
-                  </div>
-              </div>
-              <div class="form-row">
-                  <div class="form-group col-md-6">
-                    <label for="emp_designation">Designation</label>
-                    <input type="text" [(ngModel)]="currentProfile.emp_designation" class="form-control" id="emp_designation" placeholder="Designation">
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="emp_department">Department</label>
-                    <input type="text" [(ngModel)]="currentProfile.department_deptid" class="form-control" id="emp_department" placeholder="Designation" readonly>
-                  </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="emp_email">Email ID</label>
-                  <input type="email" [(ngModel)]="currentProfile.emp_email" class="form-control" id="emp_email" placeholder="Email">
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="emp_doj">Date of Joining</label>
-                  <input type="date"[(ngModel)]="currentProfile.emp_doj" class="form-control" id="emp_doj" placeholder="Date of Joining" readonly>
-                </div>
-            </div>
-              <div class="form-group">
-                <label for="emp_mobile">Mobile</label>
-                <input type="text" [(ngModel)]="currentProfile.emp_mobile" class="form-control" id="emp_mobile" placeholder="Mobile">
-              </div>
-              <!-- Buttons -->
-              <div class="form-row" >
-                <div class="form-group col-md-1 p-1" >
-                  <!-- <button type="submit" (click)="updateProfile()" id="save" name="save" class="btn btn-primary">Update</button> -->
-                </div>
-                <div class="form-group col-md-1 ml-1 p-1" >
-                  <button type="submit" id="Cancel" name="Cancel" class="btn btn-primary">Cancel</button>
-                  </div>
-              </div>
-
-    </form>
-
+<div class="container-fluid mx-0 my-0 py-0">
+  <div class="row">
+    <div class="col col-col-lg-12 p-0">
+      <app-header></app-header>
+    </div>
   </div>
-</section>
+    <div class="row">
+      <div class="col my-0 col-lg-3 col-md-4 col-sm-12 sidebar sidebar-sticky">
+        <app-side-nav></app-side-nav>
+      </div>
+      <div class="col col-lg-9 col-md-8 col-sm-12" >
+        
+        <!--start-->
+
+        <section id="profile" class="profile-custom mt-3 p-5">
+    
+          <div class="container">
+            <form>
+                    <div class="form-heading mb-2">
+                      <!-- Form Heading -->
+                        <h3>Profile</h3>
+                    </div>
+                    <div class="form-row" >
+                      <!-- Form body -->
+                        <div class="form-group col-md-6" >
+                          <label for="emp_name">Name</label>
+                          <input type="text" [(ngModel)]="currentProfile.emp_name" name="emp_name" class="form-control" id="emp_name" placeholder="Name">
+                        </div>
+                        <div class="form-group col-md-6" >
+                            <label for="emp_id">Employee ID</label>
+                            <input type="text" [(ngModel)]="currentProfile.emp_id" name="emp_id" class="form-control" id="emp_id" placeholder="Employee ID">
+                          </div>
+                      </div>
+                      <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label for="emp_designation">Designation</label>
+                            <input type="text" [(ngModel)]="currentProfile.emp_designation" name="emp_designation" class="form-control" id="emp_designation" placeholder="Designation">
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label for="emp_department">Department</label>
+                            <input type="text" [(ngModel)]="currentProfile.department.dept_name" name="emp_department" class="form-control" id="emp_department" placeholder="Designation" readonly>
+                          </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="emp_email">Email ID</label>
+                          <input type="email" [(ngModel)]="currentProfile.emp_email" name="emp_email" class="form-control" id="emp_email" placeholder="Email">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="emp_doj">Date of Joining</label>
+                          <input type="text"[(ngModel)]="currentProfile.emp_doj" name="emp_doj"  class="form-control" id="emp_doj" placeholder="Date of Joining" readonly>
+                        </div>
+                    </div>
+                      <div class="form-group">
+                        <label for="emp_mobile">Mobile</label>
+                        <input type="text" [(ngModel)]="currentProfile.emp_mobile" name="emp_mobile" class="form-control" id="emp_mobile" placeholder="Mobile">
+                      </div>
+                      <!-- Buttons -->
+                      <div class="form-row" >
+                        <div class="form-group col-md-1 p-1" >
+                          <button type="submit" (click)="updateProfileDetails()" id="save" name="save" class="btn btn-primary">Update</button>
+                        </div>
+                        <div class="form-group col-md-1 ml-1 p-1" >
+                          <button type="submit" id="Cancel" name="Cancel" class="btn btn-primary">Cancel</button>
+                          </div>
+                      </div>
+        
+            </form>
+        
+          </div>
+        </section>
+
+
+        <!--end-->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-lh-12 p-0">
+        <app-footer></app-footer>
+      </div>
+    </div>
+</div>
+
+
+

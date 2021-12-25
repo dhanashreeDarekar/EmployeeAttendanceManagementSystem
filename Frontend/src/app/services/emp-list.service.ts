@@ -11,18 +11,12 @@ export class EmpListService {
 
   constructor(private http:HttpClient) { }
 
-  // public getAllEmployees():Observable<any>{
-  //   // return this.http.get("http://localhost:9001/manager/all")
-
-  //   return this.http.get(url);
-
-    // getAllEmployees(): Observable<AllEmployees> {
-    //   return this.http.get<AllEmployees>(this.url+"manager/all");
-    // }
 
     getAllEmployees(): Observable<any> {
       return this.http.get<any>(this.url+"manager/all");
     }
+
+
   }
 
 

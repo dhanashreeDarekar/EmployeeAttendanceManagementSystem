@@ -1,4 +1,6 @@
+import { LeavesService } from './../services/leaves.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-leave-apply',
@@ -7,9 +9,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeaveApplyComponent implements OnInit {
 
-  constructor() { }
+  
+  id:any = localStorage.getItem("userId");
+
+  leave ={
+    date_from:"",
+	  date_to:"",
+    leave_month:"",
+    leave_description:""
+  }
+
+  constructor(private service:LeavesService,router:Router) { }
 
   ngOnInit(): void {
+  }
+
+  requestLeave(){
+    console.log(this.leave)
+    this.service.requestLeave(this.id,this.leave).subscribe(
+      (data) => {
+        console.log(this.id);
+        console.log(data)
+      },
+      err => {
+        console.log(err)
+      }
+    )
   }
 
 }

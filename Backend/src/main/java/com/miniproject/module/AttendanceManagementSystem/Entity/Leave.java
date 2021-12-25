@@ -14,22 +14,32 @@ public class Leave {
 	private int leave_id;
 	//private int leave_emp_id;
 	private String  leave_description;
-	@ColumnDefault("false")
-	private boolean approved;
-	private Date date_from = new Date();
-	private Date date_to = new Date();
-	private int leave_month;
+	@ColumnDefault("0")
+	private int approved;
+	private String date_from ;
+	private String date_to ;
+	private String leave_month;
 	private int leave_total_days;
 	@ManyToOne
 	private Employee employee;
 
-	public Leave(Employee employee) {
+	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
 
 	public Employee getEmployee() {
 		return employee;
 	}
+
+	public int isApproved() {
+		return approved;
+	}
+
+	public void setApproved(int approved) {
+		this.approved = approved;
+	}
+
+	
 
 	public Leave() {
 
@@ -53,28 +63,28 @@ public class Leave {
 	public void setLeave_description(String leave_description) {
 		this.leave_description = leave_description;
 	}
-	public boolean isLeave_approved() {
+	public int isLeave_approved() {
 		return approved;
 	}
-	public void setLeave_approved(boolean leave_approved) {
+	public void setLeave_approved(int leave_approved) {
 		this.approved = leave_approved;
 	}
-	public Date getDate_from() {
+	public String getDate_from() {
 		return date_from;
 	}
-	public void setDate_from(Date date_from) {
+	public void setDate_from(String date_from) {
 		this.date_from = date_from;
 	}
-	public Date getDate_to() {
+	public String getDate_to() {
 		return date_to;
 	}
-	public void setDate_to(Date date_to) {
+	public void setDate_to(String date_to) {
 		this.date_to = date_to;
 	}
-	public int getLeave_month() {
+	public String getLeave_month() {
 		return leave_month;
 	}
-	public void setLeave_month(int leave_month) {
+	public void setLeave_month(String leave_month) {
 		this.leave_month = leave_month;
 	}
 	public int getLeave_total_days() {
@@ -83,8 +93,8 @@ public class Leave {
 	public void setLeave_total_days(int leave_total_days) {
 		this.leave_total_days = leave_total_days;
 	}
-	public Leave(int leave_id, String leave_description, boolean leave_approved, Date date_from,
-			Date date_to, int leave_month, int leave_total_days) {
+	public Leave(int leave_id, String leave_description, int leave_approved, String date_from,
+			String date_to, String leave_month, int leave_total_days, Employee employee) {
 		this.leave_id = leave_id;
 		//this.leave_emp_id = leave_emp_id;
 		this.leave_description = leave_description;
@@ -93,6 +103,7 @@ public class Leave {
 		this.date_to = date_to;
 		this.leave_month = leave_month;
 		this.leave_total_days = leave_total_days;
+		this.employee = employee;
 	}
 	
 

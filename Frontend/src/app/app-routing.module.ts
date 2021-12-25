@@ -1,3 +1,4 @@
+import { AddAttendanceComponent } from './add-attendance/add-attendance.component';
 import { EmpListComponent } from './emp-list/emp-list.component';
 import { LeavesComponent } from './leaves/leaves.component';
 import { AttendanceComponent } from './attendance/attendance.component';
@@ -8,9 +9,10 @@ import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LeaveApplyComponent } from './leave-apply/leave-apply.component';
+import { AddEmpComponent } from './add-emp/add-emp.component';
 
 const routes: Routes = [
-  // {path:'',component:LoginComponent},
+  {path:'',component:LoginComponent},
   {path:'overview',component:OverviewComponent},
   {path:'login',component:LoginComponent}, 
   {path:'profile',component:ProfileComponent},
@@ -19,9 +21,8 @@ const routes: Routes = [
   {path:'attendance',component:AttendanceComponent},
   {path:'leaves',component:LeavesComponent},
   {path:'emp-list',component:EmpListComponent},
-
-  
-  // {path:'**',redirectTo:''}
+  {path:'add-emp',component:AddEmpComponent},
+  {path:'mark-attendance',component:AddAttendanceComponent},
 ];
 
 @NgModule({

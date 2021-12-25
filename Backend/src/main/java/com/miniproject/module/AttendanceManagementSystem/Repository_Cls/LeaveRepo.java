@@ -18,7 +18,7 @@ public interface LeaveRepo extends JpaRepository<Leave , Integer>{
     @Query(value = "SELECT * FROM leave1 l where l.employee_emp_id =:name")
     List<Leave> findAllByEmployee_EmpId(int id);
 
-    List<Leave> findAllByApproved(Boolean Approved);
+    List<Leave> findAllByApproved(int Approved);
     //	@Modifying
 //	@Query(" update Leave l set l.leave_approved =:status where l.leave_emp_id = :empid ")
 //	void LeaveStatus(@Param("leave_approved") boolean leave_approved , @Param("leave_emp_id") Integer leave_emp_id );

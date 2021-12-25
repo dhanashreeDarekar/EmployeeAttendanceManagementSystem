@@ -1,4 +1,6 @@
+import { LeavesService } from './../services/leaves.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-leaves',
@@ -7,9 +9,60 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeavesComponent implements OnInit {
 
-  constructor() { }
+  leaves:any[]=[];
+
+  constructor(private service:LeavesService, private router:Router) { }
 
   ngOnInit(): void {
+    this.retrieveLeaves();
   }
+
+
+  retrieveLeaves():void{
+    this.service.retrieveLeaves()
+    .subscribe(
+      (data) =>{
+        console.log(data);
+        this.leaves = data;
+        
+      },
+      error =>{
+        alert(error)
+      }
+      
+    );
+  }
+
+  leaveApprove(id:any){
+
+    alert(id);
+    this.service.aproveLeave(id)
+    .subscribe(
+      (data) =>{
+
+        this.router.navigate(['/leaves']);
+      },
+      error =>{
+        alert(error)
+      }
+    );
+  }
+
+  leaveDecline(id:any){
+    alert(id);
+    this.service.declineLeave(id)
+    .subscribe(
+      (data) =>{
+
+
+      },
+      error =>{
+        alert(error)
+      }
+    );
+
+  }
+
+  
 
 }

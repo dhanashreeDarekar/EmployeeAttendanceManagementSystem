@@ -6,6 +6,8 @@ import java.util.Optional;
 
 import ch.qos.logback.core.encoder.LayoutWrappingEncoder;
 import com.miniproject.module.AttendanceManagementSystem.Entity.*;
+import com.miniproject.module.AttendanceManagementSystem.Repository_Cls.EmpRepo;
+import com.miniproject.module.AttendanceManagementSystem.Repository_Cls.ManagerRepo;
 import com.miniproject.module.AttendanceManagementSystem.Services_Cls.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -48,7 +50,7 @@ public class ManagerController {
 		return new ResponseEntity<>(emp , HttpStatus.OK);
 	}
 
-	@GetMapping("/find/{id}")
+	@GetMapping("/employee/{id}")
 	public ResponseEntity<Employee> getEmployeeById(@PathVariable("id") int id){
 		Optional<Employee> emp = managerservices.findEmployeeById(id);
 		Employee em;
@@ -59,16 +61,27 @@ public class ManagerController {
 		return new ResponseEntity<>(em , HttpStatus.OK);
 	}
 	
-	@PostMapping("/add")
-	public ResponseEntity<Employee> addEmployee(@RequestBody Employee employee){
-		Employee newEmp = managerservices.addEmp(employee);
-		return new ResponseEntity<>(newEmp , HttpStatus.CREATED);
+	@Autowired
+	private EmpRepo emprepo;
+	
+	@PostMapping("/add/{id}")
+	public Employee addEmployee(@PathVariable("id") int id ,@RequestBody Employee employee){
+		Employee em = new Employee();
+		em.setEmp_name(employee.getEmp_name());
+		em.setEmp_designation(employee.getEmp_designation());
+		em.setEmp_mobile(employee.getEmp_mobile());
+		em.setEmp_email(employee.getEmp_email());
+		em.setDepartment(new Department());
+		em.getDepartment().setDept_id(id);
+		return emprepo.save(em);
+//		System.out.println(employee);
+		
 	}
 
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<String> delEmp(@PathVariable("id") int id){
 		managerservices.deleteEmployee(id);
-		return new ResponseEntity<>("Deleted",HttpStatus.OK);
+		return new ResponseEntity<>("Deleted",HttpStatus.OK); 
 	}
 	
 	@GetMapping("/alldept") // for displaying all department
@@ -107,17 +120,17 @@ public class ManagerController {
 		return new ResponseEntity<>(e , HttpStatus.OK);
 	}
 	*/
-	@GetMapping("/showleave")
+	@GetMapping("/showLeaves")
 	public ResponseEntity<List<Leave>> showLeave(){
 		List<Leave> ll = managerservices.showLeaveReq();
 		return new ResponseEntity<>(ll , HttpStatus.OK);
 	}
-	@GetMapping("/showleave/Accepted")
+	@GetMapping("/showleave/approved")
 	public ResponseEntity<List<Leave>> showAcceptedEmpLeave(){
 		List<Leave> ll = leaveService.getLeaveByAccepted();
 		return new ResponseEntity<>(ll , HttpStatus.OK);
 	}
-	@GetMapping("/showleave/NotAccepted")
+	@GetMapping("/showleave/pending")
 	public ResponseEntity<List<Leave>> showNotAcceptedEmpLeave(){
 		List<Leave> ll = leaveService.getLeaveByNotAccepted();
 		return new ResponseEntity<>(ll , HttpStatus.OK);
@@ -129,10 +142,17 @@ public class ManagerController {
 
 		return new ResponseEntity<>(ll , HttpStatus.OK);
 	}
-	@PutMapping("/ApproveLeave/{leaveid}")
-	public ResponseEntity<Leave> approveLeave(@PathVariable("leaveid") int leaveid)
+	@PutMapping("/approveLeave")
+	public ResponseEntity<Leave> approveLeave(@RequestBody int request)
 	{
-		Leave lv = leaveService.approveLeave(leaveid);
+		Leave lv = leaveService.approveLeave(request);
+		return new ResponseEntity<>(lv,HttpStatus.OK);
+	}
+	
+	@PutMapping("/declined")
+	public ResponseEntity<Leave> declineLeave(@RequestBody int request)
+	{
+		Leave lv = leaveService.declinedLeave(request);
 		return new ResponseEntity<>(lv,HttpStatus.OK);
 	}
 //	@PostMapping("/showleave/empid")

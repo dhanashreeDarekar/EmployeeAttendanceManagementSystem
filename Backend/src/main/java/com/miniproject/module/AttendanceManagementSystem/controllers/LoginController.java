@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.miniproject.module.AttendanceManagementSystem.Entity.Employee;
 import com.miniproject.module.AttendanceManagementSystem.Entity.Login;
 import com.miniproject.module.AttendanceManagementSystem.Repository_Cls.LoginRepo;
 
@@ -36,7 +37,9 @@ public class LoginController {
 			Login l1 = loginrepo.findByUsername(username);
 			if(l1.getPassword().equals(password))
 			{
-				return 200;
+				Employee e = l1.getEmployee();
+				int id = e.getEmp_id();
+				return id;
 			}
 		}catch(Exception e) {
 			res.sendRedirect("/notAllowed");

@@ -18,6 +18,9 @@ import { LeaveApproveComponent } from './leave-approve/leave-approve.component';
 import { LeavesComponent } from './leaves/leaves.component';
 import { AttendanceComponent } from './attendance/attendance.component';
 import { EmpListComponent } from './emp-list/emp-list.component';
+import { HomeComponent } from './home/home.component';
+import { AddEmpComponent } from './add-emp/add-emp.component';
+import { AddAttendanceComponent } from './add-attendance/add-attendance.component';
 
 
 @NgModule({
@@ -34,6 +37,9 @@ import { EmpListComponent } from './emp-list/emp-list.component';
     LeavesComponent,
     AttendanceComponent,
     EmpListComponent,
+    HomeComponent,
+    AddEmpComponent,
+    AddAttendanceComponent,
     
   ],
   imports: [

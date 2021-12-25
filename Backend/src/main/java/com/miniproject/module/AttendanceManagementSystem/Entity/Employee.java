@@ -27,7 +27,7 @@ public class Employee implements Serializable{
 	private int empId;
 	private String emp_name;
 	private String emp_designation;
-	private Date emp_doj = new Date();
+	private String emp_doj;
 	//private int emp_dept_id;
 	private String emp_mobile;
 	private String emp_email;
@@ -39,7 +39,7 @@ public class Employee implements Serializable{
 //	public EmployeeService employeeService(){
 //		return new EmployeeService();
 //	}
-	Employee(int emp_id , String emp_name,Department department ,String emp_designation , Date emp_doj , int emp_deptment , String emp_mobile , String emp_email ){
+	Employee(int emp_id , String emp_name,Department department ,String emp_designation , String emp_doj , int emp_deptment , String emp_mobile , String emp_email ){
 		this.empId = emp_id ;
 		this.emp_name = emp_name ;
 		this.emp_designation = emp_designation;
@@ -82,11 +82,11 @@ public class Employee implements Serializable{
 		this.emp_designation = emp_designation;
 	}
 
-	public Date getEmp_doj() {
+	public String getEmp_doj() {
 		return emp_doj;
 	}
 
-	public void setEmp_doj(Date emp_doj) {
+	public void setEmp_doj(String emp_doj) {
 		this.emp_doj = emp_doj;
 	}
 

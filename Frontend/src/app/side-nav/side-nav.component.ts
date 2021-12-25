@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideNavComponent implements OnInit {
 
+  userId:any = localStorage.getItem("userId");
+
+  isEmployee:boolean = true;
   constructor() { }
 
   ngOnInit(): void {
+    //call id here 
+    //if(this.isEmployee == true){
+
+    // }
   }
+
+
 
 }

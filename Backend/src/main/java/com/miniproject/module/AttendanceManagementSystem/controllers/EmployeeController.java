@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Optional;
 
 import com.miniproject.module.AttendanceManagementSystem.Entity.*;
+import com.miniproject.module.AttendanceManagementSystem.Repository_Cls.EmpRepo;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
@@ -46,22 +49,44 @@ public class EmployeeController {
 		return new ResponseEntity<>(emp , HttpStatus.OK);
 	}
 	
-	@PutMapping("/update")
-	public ResponseEntity<Employee> updateEmp(@RequestBody Employee emp){
-		Employee ee = empservice.updateEmployee(emp);
-		return new ResponseEntity<>(ee , HttpStatus.OK);
+	@Autowired
+	private EmpRepo emprepo; 
+	
+	@PutMapping("/update/{id}")
+	public ResponseEntity<Employee> updateEmp(@PathVariable int id ,@RequestBody Employee emp){
+		Employee e = emprepo.findByEmpId(id);
+		e.setEmp_name(emp.getEmp_name());
+		e.setEmp_email(emp.getEmp_email());
+		e.setEmp_mobile(emp.getEmp_mobile());
+		
+		emprepo.save(e);
+//		Employee ee = empservice.updateEmployee(emp);
+		return new ResponseEntity<>(e , HttpStatus.OK);
 	}
 	
-	@PostMapping("/markAttendance")
-	public String markAttendance(@RequestBody Attendance_Cls request) {
-			attendanceservice.apply_Attendance(request);
+	@PostMapping("/markAttendance/{id}")
+	public String markAttendance(@PathVariable int id, @RequestBody Attendance_Cls request) {
+		
+		Attendance_Cls aa = new Attendance_Cls();
+		aa.setAtt_date_to(request.getAtt_date_to());
+		aa.setAtt_month(request.getAtt_month());
+		aa.setDate_form(request.getDate_form());
+		aa.setEmployee(new Employee());
+		aa.getEmployee().setEmp_id(id);
+		attendanceservice.apply_Attendance(aa);
+			
 			return "Attendance Mark Successfully ";
 	}
 	
+	
+	
 
-	@PostMapping("/appyLeave")
-	public ResponseEntity<Leave> ApplyForLeave(@RequestBody Leave request ) {
+	@PostMapping("/requestLeave/{id}")
+	public ResponseEntity<Leave> ApplyForLeave(@PathVariable int id,@RequestBody Leave request ) {
 		System.out.println("Hello");
+		request.setEmployee(new Employee());
+		request.getEmployee().setEmp_id(id);
+		
 		Leave lv =  empservice.applyForLeave(request);
 		return new ResponseEntity<>(lv , HttpStatus.CREATED);
 	}

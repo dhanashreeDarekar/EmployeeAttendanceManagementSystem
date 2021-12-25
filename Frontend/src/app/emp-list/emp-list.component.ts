@@ -25,6 +25,9 @@ export class EmpListComponent implements OnInit {
         console.log(data);
         this.employees = data;
         
+      },
+      error =>{
+        alert(error)
       }
       
     );

@@ -11,4 +11,6 @@ import com.miniproject.module.AttendanceManagementSystem.Entity.Employee;
 @Repository
 public interface EmpRepo extends JpaRepository<Employee , Integer> {
     List<Employee> findAllByDepartment_Deptid(int deptid);
+    
+    Employee findByEmpId(int id);
 }

@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  id:any;
 
   user ={
     username:'',
@@ -29,16 +30,20 @@ export class LoginComponent implements OnInit {
     
 
     this.service.validateLogin(this.user).subscribe(data=>{
-      if(data==200){
+      if(data!=400){
         // alert("logged in succesfully..");
+        this.id = data;
+        localStorage.setItem("userId",this.id);
+        console.log(this.id);
         this.isError=true;
         this.router.navigate(['emp-list']);
+        // console.log(this.id,data)
 
       }
+    },
+    err=>{
+      this.isError=false;
     }
-    // ,err=>{
-    //   this.isError=false;
-    // }
     )
 
   }

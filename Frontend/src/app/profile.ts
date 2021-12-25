@@ -1,5 +1,5 @@
 
-export class AllEmployees {
+export class Profile {
     empId!:number;
 	emp_name!:String;
 	emp_designation!:number;
