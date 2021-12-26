@@ -14,23 +14,23 @@ export class AddAttendanceComponent implements OnInit {
   attendance ={
     att_date_to:"",
 	  att_month:"",
-    date_from:"",
+    date_form:"",
   }
 
-  constructor(private service:AttendanceService,router:Router) { }
+  constructor(private service:AttendanceService,private router:Router) { }
 
   ngOnInit(): void {
   }
 
   markAttendance(){
-    console.log(this.attendance)
     this.service.addAttendance(this.id,this.attendance).subscribe(
+      
       (data) => {
-        console.log(this.id);
-        console.log(data)
+        alert("Attendance Marked Succesfully");
+        window.location.reload();
       },
       err => {
-        console.log(err)
+
       }
     )
   }

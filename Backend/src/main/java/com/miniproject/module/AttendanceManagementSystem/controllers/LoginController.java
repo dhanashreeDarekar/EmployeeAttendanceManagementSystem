@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -29,25 +30,28 @@ public class LoginController {
 	private LoginRepo loginrepo;
 	
 	@PostMapping("/login")
-	public int home(@RequestBody Login login, HttpServletResponse res)throws IOException {
+	public ResponseEntity<Employee> home(@RequestBody Login login, HttpServletResponse res)throws IOException {
 		String username = login.getUsername();
 		String password = login.getPassword();
 		
 		try {
 			Login l1 = loginrepo.findByUsername(username);
-			if(l1.getPassword().equals(password))
+			if(l1.getPassword().equals(password) && l1.getUsername().equals(username))
 			{
 				Employee e = l1.getEmployee();
 				int id = e.getEmp_id();
-				return id;
+				System.out.println(e);
+				return new ResponseEntity<>(e,HttpStatus.OK);
 			}
 		}catch(Exception e) {
 			res.sendRedirect("/notAllowed");
-			return 400;
+			return new ResponseEntity<>(null,HttpStatus.EXPECTATION_FAILED);
 		}
 		
-		return 400;
+		return new ResponseEntity<>(null,HttpStatus.EXPECTATION_FAILED);
 	}
+	
+	
 	
 	@GetMapping("/notAllowed")
 	@ResponseStatus(code=HttpStatus.NOT_FOUND)

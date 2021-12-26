@@ -40,8 +40,8 @@
                         <td>{{leave.date_to}}</td>
                         <td>{{leave.leave_month}}</td>
                         <td>{{leave.leave_description}}</td>
-                        <td><button (click)="leaveApprove(leave.leave_id)">Approve</button></td>
-                        <td><button (click)="leaveDecline(leave.leave_id)">Decline</button></td>
+                        <td><button class="btn" (click)="leaveApprove(leave.leave_id)">Approve</button></td>
+                        <td><button class="btn" (click)="leaveDecline(leave.leave_id)">Decline</button></td>
                       </tr>
                     </tbody>
             </table>

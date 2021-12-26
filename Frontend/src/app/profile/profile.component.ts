@@ -1,3 +1,4 @@
+import { department } from './../department';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProfileService } from '../services/profile.service';
@@ -37,8 +38,7 @@ export class ProfileComponent implements OnInit {
     this.service.getProfileDetails(id)
     .subscribe(
       data =>{
-        // console.log(id);
-        // console.log(data)
+       
         this.currentProfile = data;
         
       },

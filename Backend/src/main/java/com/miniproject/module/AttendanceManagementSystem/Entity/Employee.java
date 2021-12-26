@@ -20,7 +20,7 @@ import java.util.*;
 //@Configuration
 @Entity
 @Table(name ="Employee")
-public class Employee implements Serializable{
+public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY  )
 	@Column(nullable = false , updatable = false)

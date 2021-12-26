@@ -17,24 +17,29 @@
                 <div class="container">
                     <div class="form-heading mb-2">
                         <!-- Form Heading -->
-                          <h3>Leave Apply</h3>
+                          <h3>Apply For Leave</h3>
                       </div>
                       <form>
-                        <div class="form-group">
-                            <label for="From">From</label>
-                            <input type="text" [(ngModel)]="leave.date_from" name="leave_from" id="leave_from"  class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="To">To</label>
-                            <input type="text" [(ngModel)]="leave.date_to" name="leave_to" id="leave_to"  class="form-control">
+                        <div></div>
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                              <label for="From">From</label>
+                              <input type="text" [(ngModel)]="leave.date_from" name="leave_from" id="leave_from"  class="form-control">
+                          </div>
+                          <div class="form-group col-md-6">
+                              <label for="To">To</label>
+                              <input type="text" [(ngModel)]="leave.date_to" name="leave_to" id="leave_to"  class="form-control">
                             </div>
-                            <div class="form-group">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
                               <label for="To">Month</label>
-                              <input type="text" [(ngModel)]="leave.leave_month" name="leave_month" id="leave_month"  class="form-control">
+                              <input type="month" [(ngModel)]="leave.leave_month" name="leave_month" id="leave_month"  class="form-control">
                               </div>
-                        <div class="form-group">
+                        <div class="form-group col-md-6">
                             <label for="Description">Description</label>
                             <input type="text" [(ngModel)]="leave.leave_description" name="leave_description" id="leave_description"  class="form-control">
+                        </div>
                         </div>
                         <button type="submit" (click)="requestLeave()" class="btn btn-primary mx-1">Apply</button>
                         <button type="submit" class="btn btn-primary mx-1">Cancel</button>

@@ -10,6 +10,9 @@ export class LeavesService {
   private urla = "http://localhost:9001/manager/showleave/pending"
   private urlb = "http://localhost:9001/manager/approveLeave/"
   private urlc = "http://localhost:9001/manager/declined/"
+
+  private urld = "http://localhost:9001/employee/getAllLeaves/"
+
   constructor(private http:HttpClient) { }
 
 
@@ -28,6 +31,11 @@ export class LeavesService {
   }
   declineLeave(id:any): Observable<any> {
     return this.http.put<any>(this.urlc,id);
+  }
+
+  //show leave of an employee
+  getLeaves(id:any): Observable<any> {
+    return this.http.get<any>(this.urld+id);
   }
 
 

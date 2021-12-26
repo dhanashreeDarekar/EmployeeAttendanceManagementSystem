@@ -15,7 +15,7 @@ import java.util.Optional;
 public interface LeaveRepo extends JpaRepository<Leave , Integer>{
 //    @Override
 //    Optional<Leave> findByEmpId(Integer integer);
-    @Query(value = "SELECT * FROM leave1 l where l.employee_emp_id =:name")
+//    @Query(value = "SELECT * FROM leave1 l where l.employee_emp_id =:name")
     List<Leave> findAllByEmployee_EmpId(int id);
 
     List<Leave> findAllByApproved(int Approved);

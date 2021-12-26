@@ -65,7 +65,7 @@ public class EmployeeController {
 	}
 	
 	@PostMapping("/markAttendance/{id}")
-	public String markAttendance(@PathVariable int id, @RequestBody Attendance_Cls request) {
+	public ResponseEntity<Attendance_Cls> markAttendance(@PathVariable int id, @RequestBody Attendance_Cls request) {
 		
 		Attendance_Cls aa = new Attendance_Cls();
 		aa.setAtt_date_to(request.getAtt_date_to());
@@ -75,7 +75,7 @@ public class EmployeeController {
 		aa.getEmployee().setEmp_id(id);
 		attendanceservice.apply_Attendance(aa);
 			
-			return "Attendance Mark Successfully ";
+			return new ResponseEntity<>(aa,HttpStatus.OK);
 	}
 	
 	
@@ -94,6 +94,7 @@ public class EmployeeController {
 	@GetMapping("/getAllLeaves/{empid}")
 	public ResponseEntity<List<Leave>> ViewStatusForLeave(@PathVariable("empid") int empid) {
 		List<Leave> l = empservice.viewStatus(empid);
+		
 //		Leave lv;
 //		if(l.isPresent())
 //		lv= l.get();
@@ -101,14 +102,12 @@ public class EmployeeController {
 //			lv = null;
 		return new ResponseEntity<>(l,HttpStatus.OK);
 	}
-/*	
-	@PatchMapping("/change/{password}")
-		public ResponseEntity<Employee> changePass(@PathVariable("password") String password){
-			Login log = loginservice.changePassword(password);
-			return new ResponseEntity<>(log , HttpStatus.OK);
-		}
-	*/
-	
-}
-	
+	@GetMapping("/getAttendance/{empid}")
+	public ResponseEntity<List<Attendance_Cls>> getAttendance(@PathVariable("empid") int empid){
+		List<Attendance_Cls> at = attendanceservice.viewByEmpId(empid);
+		return new ResponseEntity<>(at,HttpStatus.OK);
 
+	}
+}
+
+ 

@@ -26,6 +26,10 @@
                             <label for="emp_name">Name</label>
                             <input type="text"  class="form-control" [(ngModel)]="employee.emp_name" name="emp_name" id="emp_name" placeholder="Name">
                           </div>
+                          <div class="form-group col-md-6">
+                            <label for="emp_mobile">Mobile</label>
+                            <input type="text" class="form-control" [(ngModel)]="employee.emp_mobile" name="emp_mobile" id="emp_mobile" placeholder="Mobile">
+                          </div>
                           <!-- <div class="form-group col-md-6" >
                               <label for="emp_id">Employee ID</label>
                               <input type="text"class="form-control"  id="emp_id" placeholder="Employee ID">
@@ -40,15 +44,16 @@
                               <label for="emp_department">Department</label>
                               <input type="number"  class="form-control" [(ngModel)]="employee.department.deptid" name="emp_department" id="emp_department" placeholder="Designation" >
                             </div> -->
-
-                            <select class="form-group col-md-6" class="form-control" [(ngModel)]="id" name="emp_department" id="emp_department"aria-label="Default select example">
-                              <option selected>Open this select menu</option>
-                              <option value="1">Marketing</option>
-                              <option value="2">Sales</option>
-                              <option value="3">Development</option>
-                            </select>
-
-
+                            <div class="form-group col-md-6">
+                              <label for="emp_designation">Department</label>
+                              <select  class="form-control" [(ngModel)]="id" name="emp_department" id="emp_department"aria-label="Default select example">
+                                <option selected>Select Department</option>
+                                <option value="1">Marketing</option>
+                                <option value="2">Sales</option>
+                                <option value="3">Development</option>
+                              </select>
+                            </div>
+                            
                         </div>
                         <div class="form-row">
                           <div class="form-group col-md-6">
@@ -60,10 +65,10 @@
                             <input type="date" class="form-control" id="emp_doj" placeholder="Date of Joining" readonly>
                           </div> -->
                       </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                           <label for="emp_mobile">Mobile</label>
                           <input type="text" class="form-control" [(ngModel)]="employee.emp_mobile" name="emp_mobile" id="emp_mobile" placeholder="Mobile">
-                        </div>
+                        </div> -->
                         <!-- Buttons -->
                         <div class="form-row" >
                           <div class="form-group col-md-1 ml-1 p-1" >

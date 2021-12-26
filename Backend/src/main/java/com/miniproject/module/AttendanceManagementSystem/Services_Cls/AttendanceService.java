@@ -43,5 +43,6 @@ public class AttendanceService {
 	public List<Attendance_Cls> viewByEmpId(int empid) {
 		return attendancerepo.findAllByEmployee_EmpId(empid);
 	}
+
 }
 

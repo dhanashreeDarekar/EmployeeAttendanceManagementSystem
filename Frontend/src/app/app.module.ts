@@ -14,13 +14,15 @@ import { ProfileComponent } from './profile/profile.component';
 import { OverviewComponent } from './overview/overview.component';
 import { FormsModule } from '@angular/forms';
 import { LeaveApplyComponent } from './leave-apply/leave-apply.component';
-import { LeaveApproveComponent } from './leave-approve/leave-approve.component';
+
 import { LeavesComponent } from './leaves/leaves.component';
 import { AttendanceComponent } from './attendance/attendance.component';
 import { EmpListComponent } from './emp-list/emp-list.component';
 import { HomeComponent } from './home/home.component';
 import { AddEmpComponent } from './add-emp/add-emp.component';
 import { AddAttendanceComponent } from './add-attendance/add-attendance.component';
+import { MyLeavesComponent } from './my-leaves/my-leaves.component';
+import { EmpAttendanceComponent } from './emp-attendance/emp-attendance.component';
 
 
 @NgModule({
@@ -33,13 +35,15 @@ import { AddAttendanceComponent } from './add-attendance/add-attendance.componen
     ProfileComponent,
     OverviewComponent,
     LeaveApplyComponent,
-    LeaveApproveComponent,
+
     LeavesComponent,
     AttendanceComponent,
     EmpListComponent,
     HomeComponent,
     AddEmpComponent,
     AddAttendanceComponent,
+    MyLeavesComponent,
+    EmpAttendanceComponent,
     
   ],
   imports: [

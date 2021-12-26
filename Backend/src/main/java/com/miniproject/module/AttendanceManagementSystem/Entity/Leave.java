@@ -31,18 +31,26 @@ public class Leave {
 		return employee;
 	}
 
-	public int isApproved() {
-		return approved;
-	}
-
-	public void setApproved(int approved) {
-		this.approved = approved;
-	}
+//	public int isApproved() {
+//		return approved;
+//	}
+//
+//	public void setApproved(int approved) {
+//		this.approved = approved;
+//	}
 
 	
 
 	public Leave() {
 
+	}
+
+	public int getApproved() {
+		return approved;
+	}
+
+	public void setApproved(int approved) {
+		this.approved = approved;
 	}
 
 	public int getLeave_id() {

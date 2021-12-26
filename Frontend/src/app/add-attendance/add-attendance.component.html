@@ -24,19 +24,20 @@
                         <!-- Form body -->
                           <div class="form-group col-md-6" >
                             <label for="emp_name">From</label>
-                            <input type="text"  class="form-control" [(ngModel)]="attendance.date_from" name="emp_name" id="emp_name" placeholder="Name">
+                            <input type="text"  class="form-control" [(ngModel)]="attendance.date_form" name="emp_name" id="emp_name" placeholder="From">
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label for="emp_designation">To</label>
+                            <input type="text"  class="form-control" [(ngModel)]="attendance.att_date_to" name="emp_designation" id="emp_designation" placeholder="To">
                           </div>
                          
                         </div>
+
                         <div class="form-row">
-                            <div class="form-group col-md-6">
-                              <label for="emp_designation">To</label>
-                              <input type="text"  class="form-control" [(ngModel)]="attendance.att_date_to" name="emp_designation" id="emp_designation" placeholder="Designation">
-                            </div>
-                            <div class="form-group col-md-6">
-                              <label for="emp_department">Month</label>
-                              <input type="text"  class="form-control" [(ngModel)]="attendance.att_month" name="emp_department" id="emp_department" placeholder="Designation" >
-                            </div>
+                          <div class="form-group col-md-6">
+                            <label for="emp_department">Month</label>
+                            <input type="month"  class="form-control" [(ngModel)]="attendance.att_month" name="emp_department" id="emp_department" placeholder="Month" >
+                          </div>
                         </div>
                         
                         <!-- Buttons -->

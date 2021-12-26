@@ -23,3 +23,19 @@ a:hover {
 .navbar-toggler {
     color: white;
 }
+
+
+.form-heading {
+    display: block;
+    border-bottom: 2px solid orangered;
+}
+
+button {
+    background-color: transparent;
+    color: white;
+    border: none;
+    border-radius: 3px;
+}
+button:hover {
+    background-color: rgb(255, 69, 0,0.7);
+}

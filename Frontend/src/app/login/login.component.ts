@@ -1,3 +1,4 @@
+import { department } from './../department';
 import { EmpListComponent } from './../emp-list/emp-list.component';
 import { LoginService } from './../services/login.service';
 
@@ -21,6 +22,20 @@ export class LoginComponent implements OnInit {
   isError :boolean = true;
 
 
+  empDetails:any ={
+    emp_id:"",
+    emp_name:"",
+	  emp_designation:"",
+    emp_mobile:"",
+    emp_doj:"",
+	  emp_email:"",
+    department:{
+        deptid:"",
+        dept_name:""
+    }
+  }
+
+
   constructor(private service:LoginService,private router:Router) { }
 
   ngOnInit(): void {
@@ -28,16 +43,19 @@ export class LoginComponent implements OnInit {
 
   public login(){
     
+//we have to send here employee details and store it in localstorage for the session
+    this.service.validateLogin(this.user).subscribe(
+      data=>{
+        if(data!= null){
+          this.empDetails = data;
 
-    this.service.validateLogin(this.user).subscribe(data=>{
-      if(data!=400){
-        // alert("logged in succesfully..");
-        this.id = data;
-        localStorage.setItem("userId",this.id);
-        console.log(this.id);
+        localStorage.setItem("userId",this.empDetails.emp_id);
+        localStorage.setItem("userDepartment",this.empDetails.department.dept_name);
+        localStorage.setItem("userDesignation",this.empDetails.emp_designation);
+        localStorage.setItem("userName",this.empDetails.emp_name);
         this.isError=true;
-        this.router.navigate(['emp-list']);
-        // console.log(this.id,data)
+        this.router.navigate(['mark-attendance']);
+
 
       }
     },
@@ -47,5 +65,8 @@ export class LoginComponent implements OnInit {
     )
 
   }
+
+
+  
 
 }

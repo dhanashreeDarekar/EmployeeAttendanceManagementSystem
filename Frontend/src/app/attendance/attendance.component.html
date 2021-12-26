@@ -14,32 +14,29 @@
         <div class="section mt-3 p-5">
 
           <div class="container">
-              <div class="form-heading mb-2">
+              <div class="form-heading mb-2 d-flex justify-content-between">
                 <!-- Form Heading -->
                   <h3>Attendance</h3>
+                  <button class="btn mb-2" routerLink="/mark-attendance">Mark Attendance</button>
+
               </div>
         
             <table class="table table-responsive-sm table-striped table-hover table-bordered caption-top">
               <thead class="thead-dark">
                 <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Attendence</th>
-                  <th scope="col">Half Day</th>
-                  <th scope="col">Start Date</th>
-                  <th scope="col">End Date</th>
-                  <th scope="col">Total Days</th>
-                  <th scope="col">Status</th>
+                  <th scope="col" style="width: 33%;">From</th>
+                  <th scope="col" style="width: 33%;">To</th>
+                  <th scope="col" style="width: 33%;">Month</th>
+
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>Otto</td>
+                <tr *ngFor="let att of attendance">
+                  <td>{{att.date_form}}</td>
+                  <td>{{att.att_date_to}}</td>
+                  <td>{{att.att_month}}</td>
+
+
                 </tr>
               </tbody>
             </table>

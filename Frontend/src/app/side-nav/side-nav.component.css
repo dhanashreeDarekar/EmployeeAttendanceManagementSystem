@@ -18,6 +18,10 @@ a:hover {
   color: white;
 }
 
+p {
+  font-size: smaller;
+}
+
 /* card */
 .card-body {
   padding: 2px;
@@ -64,3 +68,5 @@ img {
   overflow-x: hidden;
   overflow-y: scroll; 
 }  */
+
+

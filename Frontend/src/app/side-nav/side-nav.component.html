@@ -1,6 +1,102 @@
-<div *ngIf="isEmployee">
-    
 
+
+<div *ngIf="isManager; else elseBlock">
+    <!-- is manager then display this navigation -->
+    <div class="container side-nav-custom w-100 ">
+      <div class="row">
+        <div class=" col card mx-auto text-center" style="max-width: 75% ;">
+          <img class="img-thumbnail mx-auto rounded"src="https://toppng.com/uploads/preview/icons-logos-emojis-user-icon-png-transparent-11563566676e32kbvynug.png" width="70px" height="auto"  alt="Profile Image">
+            <div class="card-body">
+              <p class="m-0">EMP ID: {{userId}}</p>
+              <p>{{userName | uppercase}}</p>
+              <p>{{userDesignation | uppercase}}</p>
+              <p>{{userDepartment | uppercase}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="row d-block">
+        <nav>
+          <ul class="nav flex-column ">
+            <!-- <li class="nav-item   mt-2">
+              <a class="nav-link " routerLink="/overview">Overview</a>
+            </li> -->
+            <li class="nav-item ">
+              <a class="nav-link"  routerLink="/profile" >Profile</a>
+            </li>
+            <!-- <li class="nav-item ">
+              <a class="nav-link" routerLink="/mark-attendance" >Mark Attendance</a>
+            </li> -->
+            <li class="nav-item ">
+              <a class="nav-link"  routerLink="/attendance" >Self Attendance</a>
+            </li>
+            <!-- <li class="nav-item ">
+              <a class="nav-link" routerLink="/my-leaves">My Leaves</a>
+            </li> -->
+            <li class="nav-item ">
+              <a class="nav-link" routerLink="/leaves">Approve Leaves</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" routerLink="/emp-list">Employee List</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link"  routerLink="/emp-attendance" >Employee Attendance</a>
+            </li>
+            <!-- <li class="nav-item ">
+              <a class="nav-link" routerLink="/add-emp" >Add Employee</a>
+            </li> -->
+          </ul>
+        </nav>
+      </div>
+</div>
+
+
+  </div>
+<ng-template #elseBlock>
+
+<!-- is employee then display this navigation -->
+
+<div class="container side-nav-custom w-100">
+  <div class="row">
+    <div class=" col card mx-auto text-center" style="max-width: 75% ;">
+      <img class="img-thumbnail mx-auto rounded"src="https://toppng.com/uploads/preview/icons-logos-emojis-user-icon-png-transparent-11563566676e32kbvynug.png" width="70px" height="auto"  alt="Profile Image">
+        <div class="card-body">
+          <p class="m-0">EMP ID: {{userId}}</p>
+              <p>{{userName | uppercase}}</p>
+              <p>{{userDesignation | uppercase}}</p>
+              <p>{{userDepartment | uppercase}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="row d-block">
+    <nav>
+      <ul class="nav flex-column ">
+        <!-- <li class="nav-item   mt-2">
+          <a class="nav-link " routerLink="/overview">Overview</a>
+        </li> -->
+        <li class="nav-item ">
+          <a class="nav-link"  routerLink="/profile" >Profile</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link"  routerLink="/attendance" >Attendance</a>
+        </li>
+        <!-- <li class="nav-item ">
+          <a class="nav-link" routerLink="/mark-attendance" >Mark Attendance</a>
+        </li> -->
+        <li class="nav-item ">
+          <a class="nav-link" routerLink="/my-leaves">My Leaves</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" routerLink="/leave-apply" >Request Leave</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+</div>
+
+</ng-template>
+    
+<!-- 
 
 
 <div class="container side-nav-custom w-100">
@@ -52,8 +148,8 @@
   </div>
 
 </div>
+ -->
 
-</div>
 
 
 <!-- <nav id="side-nav" class=" d-lg-block">

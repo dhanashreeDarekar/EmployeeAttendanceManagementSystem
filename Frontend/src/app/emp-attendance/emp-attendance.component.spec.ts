@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LeaveApproveComponent } from './leave-approve.component';
+import { EmpAttendanceComponent } from './emp-attendance.component';
 
-describe('LeaveApproveComponent', () => {
-  let component: LeaveApproveComponent;
-  let fixture: ComponentFixture<LeaveApproveComponent>;
+describe('EmpAttendanceComponent', () => {
+  let component: EmpAttendanceComponent;
+  let fixture: ComponentFixture<EmpAttendanceComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LeaveApproveComponent ]
+      declarations: [ EmpAttendanceComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LeaveApproveComponent);
+    fixture = TestBed.createComponent(EmpAttendanceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

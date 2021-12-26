@@ -34,12 +34,10 @@ export class LeavesComponent implements OnInit {
   }
 
   leaveApprove(id:any){
-
-    alert(id);
     this.service.aproveLeave(id)
     .subscribe(
       (data) =>{
-
+        window.location.reload();
         this.router.navigate(['/leaves']);
       },
       error =>{
@@ -49,10 +47,11 @@ export class LeavesComponent implements OnInit {
   }
 
   leaveDecline(id:any){
-    alert(id);
     this.service.declineLeave(id)
     .subscribe(
       (data) =>{
+
+        window.location.reload();
 
 
       },

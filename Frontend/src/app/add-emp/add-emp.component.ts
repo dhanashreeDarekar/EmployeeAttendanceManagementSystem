@@ -24,11 +24,11 @@ export class AddEmpComponent implements OnInit {
   }
 
   addEmployee(){
-    alert(this.employee)
     this.service.addEmployeeDetails(this.id,this.employee).subscribe(
       data =>{
         // alert(data)
-        console.log(data);
+        alert("Employee Added Succesfully");
+        window.location.reload();
       },
       err =>{
         // alert(err)
