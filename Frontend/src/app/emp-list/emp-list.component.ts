@@ -27,7 +27,7 @@ export class EmpListComponent implements OnInit {
         
       },
       error =>{
-        alert(error)
+        alert(error);
       }
       
     );

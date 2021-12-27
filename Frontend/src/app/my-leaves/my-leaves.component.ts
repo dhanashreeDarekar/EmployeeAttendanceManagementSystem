@@ -40,7 +40,7 @@ export class MyLeavesComponent implements OnInit {
         
       },
       error =>{
-        alert(error)
+        alert(error);
       }
       
     );

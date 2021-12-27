@@ -60,6 +60,7 @@ export class LoginComponent implements OnInit {
       }
     },
     err=>{
+      alert("Login Failed! Wrong Credentials!");
       this.isError=false;
     }
     )

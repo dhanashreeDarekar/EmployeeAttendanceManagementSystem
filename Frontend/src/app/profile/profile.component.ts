@@ -43,7 +43,7 @@ export class ProfileComponent implements OnInit {
         
       },
       error =>{
-        alert(error)
+        alert(error);
       }
       
     );
@@ -62,7 +62,7 @@ export class ProfileComponent implements OnInit {
         
       },
       error =>{
-        alert(error)
+        alert(error);
       }
       
     );

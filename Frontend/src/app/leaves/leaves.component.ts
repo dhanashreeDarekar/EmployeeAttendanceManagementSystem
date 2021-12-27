@@ -56,7 +56,7 @@ export class LeavesComponent implements OnInit {
 
       },
       error =>{
-        alert(error)
+        alert(error);
       }
     );
 

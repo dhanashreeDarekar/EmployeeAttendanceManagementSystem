@@ -25,16 +25,16 @@ export class LeaveApplyComponent implements OnInit {
   }
 
   requestLeave(){
-    console.log(this.leave)
+
     this.service.requestLeave(this.id,this.leave).subscribe(
       (data) => {
-        console.log(this.id);
+        
         // console.log(data)
         alert("Applied for leave.. Wait for the confirmation..");
         window.location.reload();
       },
       err => {
-        console.log(err)
+        alert("Cannot Apply for Leave! Try Again!");
       }
     )
   }

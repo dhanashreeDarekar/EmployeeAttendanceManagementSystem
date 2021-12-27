@@ -25,7 +25,7 @@ export class EmpAttendanceComponent implements OnInit {
         this.attendance = data;
       },
       error =>{
-        alert(error)
+        alert(error);
       }
       
     );

@@ -31,6 +31,7 @@ export class AddEmpComponent implements OnInit {
         window.location.reload();
       },
       err =>{
+        alert("Error Adding Employee! Try Again!");
         // alert(err)
       }
     )

@@ -29,7 +29,7 @@ export class AttendanceComponent implements OnInit {
         
       },
       error =>{
-        alert(error)
+        alert(error);
       }
       
     );

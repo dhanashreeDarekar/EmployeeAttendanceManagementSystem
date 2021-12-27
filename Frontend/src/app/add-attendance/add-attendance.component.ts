@@ -30,6 +30,7 @@ export class AddAttendanceComponent implements OnInit {
         window.location.reload();
       },
       err => {
+        alert("Cannot Mark Attendance! Try Again!");
 
       }
     )

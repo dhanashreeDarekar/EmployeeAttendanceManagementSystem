@@ -7,6 +7,7 @@ import java.util.Optional;
 import ch.qos.logback.core.encoder.LayoutWrappingEncoder;
 import com.miniproject.module.AttendanceManagementSystem.Entity.*;
 import com.miniproject.module.AttendanceManagementSystem.Repository_Cls.EmpRepo;
+import com.miniproject.module.AttendanceManagementSystem.Repository_Cls.LoginRepo;
 import com.miniproject.module.AttendanceManagementSystem.Repository_Cls.ManagerRepo;
 import com.miniproject.module.AttendanceManagementSystem.Services_Cls.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,14 +34,15 @@ public class ManagerController {
 	private final LeaveService leaveService;
 	private final EmployeeService employeeService;
 	private final AttendanceService attendanceService;
-	
+	private final LoginRepo loginRepo;
 
-	public ManagerController(@Lazy ManagerServices managerservices ,@Lazy DepartmentService deptservice,@Lazy LeaveService leaveService,@Lazy EmployeeService employeeService,@Lazy AttendanceService attendanceService) {
+	public ManagerController(@Lazy LoginRepo loginRepo, @Lazy ManagerServices managerservices ,@Lazy DepartmentService deptservice,@Lazy LeaveService leaveService,@Lazy EmployeeService employeeService,@Lazy AttendanceService attendanceService) {
 		this.managerservices = managerservices;
 		this.deptservice = deptservice;
 		this.leaveService = leaveService;
 		this.employeeService = employeeService;
 		this.attendanceService = attendanceService;
+		this.loginRepo = loginRepo;
 	}
 
 	//get all employees
@@ -66,14 +68,21 @@ public class ManagerController {
 	
 	@PostMapping("/add/{id}")
 	public ResponseEntity<Employee> addEmployee(@PathVariable("id") int id ,@RequestBody Employee employee){
-		Employee em = new Employee();
-		em.setEmp_name(employee.getEmp_name());
-		em.setEmp_designation(employee.getEmp_designation());
-		em.setEmp_mobile(employee.getEmp_mobile());
-		em.setEmp_email(employee.getEmp_email());
-		em.setDepartment(new Department());
-		em.getDepartment().setDept_id(id);
-		return new ResponseEntity<>(emprepo.save(em),HttpStatus.OK);
+//		Employee em = new Employee();
+//		em.setEmp_name(employee.getEmp_name());
+//		em.setEmp_designation(employee.getEmp_designation());
+//		em.setEmp_mobile(employee.getEmp_mobile());
+//		em.setEmp_email(employee.getEmp_email());
+		employee.setDepartment(new Department());
+		employee.getDepartment().setDept_id(id);
+		Login lg = new Login();
+		lg.setEmployee(employee);
+		String[] name = employee.getEmp_name().split(" ");
+		lg.setUsername(name[0].toLowerCase());
+		lg.setPassword(name[0].toLowerCase());
+		Employee em1 = emprepo.save(employee);
+		loginRepo.save(lg);
+		return new ResponseEntity<>(em1,HttpStatus.OK);
 //		System.out.println(employee);
 		
 	}
